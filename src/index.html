@@ -2,26 +2,73 @@
 <html>
 	<head>
 		<title>Love you, April</title>
-		<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica|Monoton" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
+    <script src="sine-waves.min.js"></script>
 		<style>
 			body {
 				background: #fff;
 				padding: 3rem 1rem;
 				margin: 0;
 			}
-			section {
-				border-radius: 6px 1px 2px 4px;
+      #moon {
+        background-color: #031738;
+        background-image:
+          radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 3px),
+          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+          radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px),
+          radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 1px, transparent 3px),
+          linear-gradient(to bottom, #031738 50%,#1d3a60 100%);
+        background-size: 550px 550px, 350px 350px, 250px 250px, 160px 160px, 100% 100%;
+        background-position: 0 0, 40px 60px, 130px 270px, 70px 120px, 0 0;
+        color: #fffef7;
+				box-shadow:
+					inset 0.8rem 0 1.5rem -0.4rem rgba(0,0,0,0.75),
+					inset 0 0 5rem rgba(0,0,0,0.5);
+      }
+      #waves {
+        position: absolute;
+        top: 3rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+      }
+      #moon-image {
+        width: 6rem;
+        height: 6rem;
+        position: relative;
+        margin: 0 auto;
+        left: 2rem;
+      }
+      #moon-image:before,
+      #moon-image:after {
+        display: block;
+        position: absolute;
+        content: "";
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
+      #moon-image:before {
+        background-color: #fffef7;
+        top: 0;
+        left: 0;
+        box-shadow: 0.2rem 0.1rem 1rem rgba(255, 255, 255, 0.5);
+      }
+      #moon-image:after {
+        background-color: #031738;
+        box-shadow: 0 0 1rem #031738;
+        top: -0.4rem;
+        left: -1.8rem;
+      }
+			#this-place {
 				background: #F0E2E3 url(paper.png) repeat;
-				position: relative;
-				padding: 3rem 4rem 1rem;
-				margin: 0 auto;
-				width: 25rem;
 				box-shadow:
 					inset 0.8rem 0 1.5rem -0.4rem rgba(118,47,32,0.3),
 					inset 0 0 5rem rgba(118,47,32,0.1);
 			}
-			section:before,
-			section:after {
+			#this-place:before,
+			#this-place:after {
 				display: block;
 				position: absolute;
 				content: "";
@@ -29,34 +76,33 @@
 				background-repeat: no-repeat;
 				opacity: 0.25;
 			}
-			section:before {
+			#this-place:before {
 				height: 300px;
 				width: 200px;
 				background-image: url(stain1.png);
 				top: 400px;
 				left: 1rem;
 			}
-			section:after {
+			#this-place:after {
 				height: 180px;
 				width: 180px;
 				background-image: url(stain2.png);
 				bottom: 1rem;
 				right: 1rem;
 			}
-			section img {
+			#this-place img {
 				display: block;
 				width: 300px;
 				margin: 0 auto 4rem;
 				opacity: 0.75;
 			}
-			h1 {
-				font-family: "Monoton";
-				font-size: 4rem;
-				font-weight: normal;
-				text-shadow: -1px -1px 1px rgba(0,0,0,0.4);
-				opacity: 0.9;
-				color: #fff;
-			}
+      section {
+				border-radius: 6px 1px 2px 4px;
+        margin: 0 auto;
+				padding: 3rem 4rem 1rem;
+				position: relative;
+        width: 25rem;
+      }
 			pre {
 				font-family: "IM Fell DW Pica";
 				font-size: 1.5rem;
@@ -66,11 +112,28 @@
 				text-align: center;
 				font-family: monospace;
 				opacity: 0.5;
+        margin-bottom: 4rem;
 			}
 		</style>
 	</head>
 	<body>
-		<section>
+    <section id="moon">
+      <div id="stars"></div>
+      <canvas id="waves"></canvas>
+      <div id="moon-image"></div>
+      <pre>
+You oscillate like
+the morphing moon while my love
+for you stays constant.
+      </pre>
+    </section>
+    <footer>
+			<p>
+				Moon: A Haiku
+				&mdash; by Chris for April, <em>14 Feb 2019</em>
+			</p>
+    </footer>
+		<section id="this-place">
 			<p>
 				<img src="heart2.png" alt="geometric heart watercolor painting" />
 			</p>
@@ -113,5 +176,43 @@ Perfectly we fit.
 				&mdash; by Chris for April, <em>14 Feb 2018</em>
 			</p>
 		</footer>
+    <script>
+      var waves = new SineWaves({
+        el: document.getElementById('waves'),
+        speed: 10,
+        ease: 'SineInOut',
+        wavesWidth: '90%',
+        width: function() {
+          return document.getElementById('moon').offsetWidth
+        },
+        height: 100,
+        waves: [
+          {
+            lineWidth: 1,      // Stroke width
+            amplitude: -60,    // How tall is the wave
+            wavelength: 15,   // How long is the wave
+            segmentLength: 5, // How smooth should the line be
+            type: 'sine'    
+          }
+        ],
+        resizeEvent: function() {
+          var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+          gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
+          gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.333)');
+          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+          var index = -1;
+          var length = this.waves.length;
+          while(++index < length){
+            this.waves[index].strokeStyle = gradient;
+          }
+
+          // Clean Up
+          index = void 0;
+          length = void 0;
+          gradient = void 0;
+        }
+      });
+    </script>
 	</body>
 </html>
