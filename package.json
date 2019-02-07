@@ -1,10 +1,8 @@
 {
   "scripts": {
-  	"serve": "cd src && instant",
-  	"deploy": "surge src"
+    "deploy": "surge src"
   },
   "devDependencies": {
-    "instant-server": "^2.0.0",
-    "surge": "^0.19.0"
+    "surge": "^0.20.1"
   }
 }
