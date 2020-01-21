@@ -12,15 +12,13 @@
 				margin: 0;
 			}
       #mosaic {
-        position: relative;
-        color: #111;
+        color: rgba(0,0,0,0.75);
+        background: url(linedpaper.png) repeat;
+        background-size: 90.1%;
+        background-position: 0 23px;
+        line-height: 29px;
       }
-      #mosaic .text {
-        background-color: rgba(255,255,255,.9);
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-      #mosaic:before, #mosaic:after {
+      #mosaic:after {
         content: '';
         position: absolute;
         top: 0;
@@ -28,15 +26,8 @@
         bottom: 0;
         left: 0;
 				border-radius: 6px 1px 2px 4px;
-      }
-      #mosaic:before {
-        background: url(mosaic.jpg) no-repeat;
-        background-size: cover;
-        background-position: 25%;
-      }
-      #mosaic:after {
 				box-shadow:
-					inset 0.8rem 0 3rem -0.4rem rgba(64,22,109,0.7),
+					inset 0.8rem 0 3rem -0.4rem rgba(64,22,109,0.4),
 					inset 0 0 5rem rgba(78,0,65,0.15);
       }
       #moon {
@@ -148,23 +139,24 @@
 	<body>
     <section id="mosaic">
       <pre>
-<span class="text">For a moment</span>
-<span class="text">he holds a single glass bead between</span>
-<span class="text">fingertips as it catches the sunlight,</span>
-<span class="text">luminous with his passion and intent.</span>
+For a moment
+he holds a single glass bead between
+fingertips as it catches the sunlight,
+luminous with his passion and intent.
 
-<span class="text">Then deliberately and steadily</span>
-<span class="text">he affixes it to the mosaic</span>
-<span class="text">before him.</span>
+Then, steadily, with eyes focused,
+brows furrowed, he affixes it to the vast
+but unfinished mosaic before him,
+bound with an intangible permanence.
 
-<span class="text">Daily he does this.</span>
-<span class="text">For <span id="number_of_days">five thousand twenty-four</span> days</span>
-<span class="text">he has done this.</span>
+Daily he does this.
+For <span id="number_of_days">five thousand twenty-four</span> days
+he has done this.
 
-<span class="text">One bead,</span>
-<span class="text">one choice,</span>
+One bead,
+one choice,
 
-<span class="text">to love her.</span>
+to love her.
       </pre>
     </section>
     <footer>
