@@ -3,6 +3,6 @@
     "deploy": "surge src"
   },
   "devDependencies": {
-    "surge": "^0.20.1"
+    "surge": "^0.23.1"
   }
 }
