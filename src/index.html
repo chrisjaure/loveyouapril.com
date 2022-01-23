@@ -5,11 +5,19 @@
 		<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
     <script src="sine-waves.min.js"></script>
     <script src="numberToWords.min.js"></script>
+    <script src="anime.min.js"></script>
 		<style>
 			body {
 				background: #fff;
 				padding: 3rem 1rem;
 				margin: 0;
+			}
+			#promise-trigger {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			.promise-line {
+				display: block;
 			}
       #kintsugi {
         background-image: url(kintsugi.jpeg);
@@ -144,7 +152,7 @@
 				position: relative;
         width: 25rem;
       }
-			pre {
+			pre, .poem {
 				font-family: "IM Fell DW Pica";
 				font-size: 1.5rem;
 				opacity: 0.9;
@@ -159,27 +167,29 @@
 	</head>
 	<body>
 		<section id="promise">
-<pre>I
-
-perhaps have not
-remembered every important
-occurrence in our
-marriage, being an
-imperfect human with
-scientifically proven flaws.
-even still,
-
-the foundation to all
-of my actions&mdash;
-
-lying in the depths
-of my
-very
-existence&mdash;is the vow I made to
-
-you that
-only needs to be
-uncovered.</pre>
+			<div class="poem">
+			<div>I</div>
+			<br />
+			<span class="promise-line"><span class="promise-letter">p</span><span class="promise-remaining">erhaps have not</span></span>
+			<span class="promise-line"><span class="promise-letter">r</span><span class="promise-remaining">emembered every important</span></span>
+			<span class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">ccurrence in our</span></span>
+			<span class="promise-line"><span class="promise-letter">m</span><span class="promise-remaining">arriage, being an</span></span>
+			<span class="promise-line"><span class="promise-letter">i</span><span class="promise-remaining">mperfect human with</span></span>
+			<span class="promise-line"><span class="promise-letter">s</span><span class="promise-remaining">cientifically proven flaws.</span></span>
+			<span class="promise-line"><span class="promise-letter">e</span><span class="promise-remaining">ven still,</span></span>
+			<br />
+			<span class="promise-line"><span class="promise-letter">t</span><span class="promise-remaining">he foundation to all</span></span>
+			<span class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">f my actions&mdash;</span></span>
+			<br />
+			<span class="promise-line"><span class="promise-letter">l</span><span class="promise-remaining">ying in the depths</span></span>
+			<span class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">f my</span></span>
+			<span class="promise-line"><span class="promise-letter">v</span><span class="promise-remaining">ery</span></span>
+			<span class="promise-line"><span class="promise-letter">e</span><span class="promise-remaining">xistence&mdash;is the vow I made to</span></span>
+			<br />
+			<span class="promise-line"><span class="promise-letter">y</span><span class="promise-remaining">ou that</span></span>
+			<span class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">nly needs to be</span></span>
+			<span id="promise-trigger" class="promise-line"><span class="promise-letter">u</span><span class="promise-remaining">ncovered.</span></span>
+			</div>
 		</section>
 		<footer>
 			<p>
@@ -288,6 +298,69 @@ Perfectly we fit.
 			</p>
 		</footer>
     <script>
+	// Promise
+	const transforms = [
+		[20, -60],
+		[32, -90],
+		[41, -120],
+		[53, -150],
+		[71, -179],
+		[78, -209],
+		[86, -238],
+
+		[0, -267],
+		[7, -297],
+		[28, -356],
+		[35, -386],
+		[47, -415],
+		[57, -445],
+
+		[0, -473],
+		[12, -503],
+		[23, -533],
+	]
+	const t1 = anime.timeline({ autoplay: false });
+	t1.add({
+		targets: '.promise-remaining',
+		opacity: 0,
+		delay: anime.stagger(200),
+		duration: 800,
+		easing: 'linear',
+		changeComplete: function(anim) {
+			if (anim.reversed) {
+				playingState = 0
+			}
+		},
+	}).add({
+		targets: '.promise-line',
+		delay: anime.stagger(100),
+		easing: 'easeOutBack',
+		translateX: function(el, i) {
+			return transforms[i][0];
+		},
+		translateY: function(el, i) {
+			return transforms[i][1];
+		},
+		changeComplete: function(anim) {
+			if (!anim.reversed) {
+				playingState = 2
+			}
+		}
+	});
+	let playingState = 0;
+	document.getElementById('promise-trigger').addEventListener('click', function() {
+		if (playingState === 0) {
+			if (t1.reversed) {
+				t1.reverse();
+			}
+			t1.play();
+			playingState = 1;
+		} else if (playingState === 2) {
+			t1.reverse();
+			t1.play();
+			playingState = 3;
+		}
+	});
       // Mosaic
       function treatAsUTC(date) {
         var result = new Date(date);
