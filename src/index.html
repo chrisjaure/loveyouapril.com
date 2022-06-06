@@ -1,35 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Love you, April</title>
-		<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
+  <head>
+    <title>Love you, April</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"
+      rel="stylesheet"
+    />
     <script src="sine-waves.min.js"></script>
     <script src="numberToWords.min.js"></script>
     <script src="anime.min.js"></script>
-		<style>
-			body {
-				background: #fff;
-				padding: 3rem 1rem;
-				margin: 0;
-			}
-			#promise-trigger {
-				transition: color 0.5s linear;
-				color: #d40093;
-				cursor: pointer;
-				position: relative;
-			}
-			#promise-trigger.promise-trigger-end {
-				color: inherit;
-			}
-			#promise-trigger .promise-letter:after {
-				content: ".";
-				opacity: 0;
-				position: absolute;
-				transition: opacity 0.5s linear;
-			}
-			#promise-trigger.promise-trigger-end .promise-letter:after {
-				opacity: 1;
-			}
+    <style>
+      body {
+        background: #fff;
+        padding: 3rem 1rem;
+        margin: 0;
+      }
+      #promise-trigger {
+        transition: color 0.5s linear;
+        color: #d40093;
+        cursor: pointer;
+        position: relative;
+	user-select: none;
+      }
+      #promise-trigger.promise-trigger-end {
+        color: inherit;
+      }
+      #promise-trigger .promise-letter:after {
+        content: ".";
+        opacity: 0;
+        position: absolute;
+        transition: opacity 0.5s linear;
+      }
+      #promise-trigger.promise-trigger-end .promise-letter:after {
+        opacity: 1;
+      }
       #kintsugi {
         background-image: url(kintsugi.jpeg);
         background-size: 110%;
@@ -37,20 +41,20 @@
         padding: 5rem 4rem 3rem;
       }
       #kintsugi:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-				border-radius: 6px 1px 2px 4px;
-				box-shadow: inset 0 0 5rem rgba(0,0,0,0.15);
+        border-radius: 6px 1px 2px 4px;
+        box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.15);
       }
       #kintsugi pre {
         opacity: 0.6;
       }
       #mosaic {
-        color: rgba(0,0,0,0.75);
+        color: rgba(0, 0, 0, 0.75);
         background: url(linedpaper.png) repeat;
         background-size: 90.1%;
         background-position: 0 23px;
@@ -58,31 +62,37 @@
         width: fit-content;
       }
       #mosaic:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-				border-radius: 6px 1px 2px 4px;
-				box-shadow:
-					inset 0.8rem 0 3rem -0.4rem rgba(64,22,109,0.25),
-					inset 0 0 5rem rgba(78,0,65,0.15);
+        border-radius: 6px 1px 2px 4px;
+        box-shadow: inset 0.8rem 0 3rem -0.4rem rgba(64, 22, 109, 0.25),
+          inset 0 0 5rem rgba(78, 0, 65, 0.15);
       }
       #moon {
         background-color: #031738;
-        background-image:
-          radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 3px),
-          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
-          radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px),
-          radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 1px, transparent 3px),
-          linear-gradient(to bottom, #031738 50%,#1d3a60 100%);
-        background-size: 550px 550px, 350px 350px, 250px 250px, 160px 160px, 100% 100%;
+        background-image: radial-gradient(
+            white,
+            rgba(255, 255, 255, 0.2) 1px,
+            transparent 3px
+          ),
+          radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 3px),
+          radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 4px),
+          radial-gradient(
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 3px
+          ),
+          linear-gradient(to bottom, #031738 50%, #1d3a60 100%);
+        background-size: 550px 550px, 350px 350px, 250px 250px, 160px 160px,
+          100% 100%;
         background-position: 0 0, 40px 60px, 130px 270px, 70px 120px, 0 0;
         color: #fffef7;
-				box-shadow:
-					inset 0.8rem 0 1.5rem -0.4rem rgba(0,0,0,0.75),
-					inset 0 0 5rem rgba(0,0,0,0.5);
+        box-shadow: inset 0.8rem 0 1.5rem -0.4rem rgba(0, 0, 0, 0.75),
+          inset 0 0 5rem rgba(0, 0, 0, 0.5);
       }
       #waves {
         position: absolute;
@@ -120,94 +130,143 @@
         top: -0.4rem;
         left: -1.8rem;
       }
-			#this-place {
-				background: #c6b9ce url(paper.png) repeat;
+      #this-place {
+        background: #c6b9ce url(paper.png) repeat;
         background-blend-mode: overlay;
-				box-shadow:
-					inset 0.8rem 0 1.5rem -0.4rem rgba(118,47,80,0.3),
-					inset 0 0 5rem rgba(118,47,32,0.1);
-			}
-			#this-place:before,
-			#this-place:after {
-				display: block;
-				position: absolute;
-				content: "";
-				background-size: contain;
-				background-repeat: no-repeat;
-				opacity: 0.25;
-			}
-			#this-place:before {
-				height: 300px;
-				width: 200px;
-				background-image: url(stain1.png);
-				top: 400px;
-				left: 1rem;
-			}
-			#this-place:after {
-				height: 180px;
-				width: 180px;
-				background-image: url(stain2.png);
-				bottom: 1rem;
-				right: 1rem;
-			}
-			#this-place img {
-				display: block;
-				width: 300px;
-				margin: 0 auto 4rem;
-				opacity: 0.75;
-			}
-      section {
-				border-radius: 6px 1px 2px 4px;
-        margin: 0 auto;
-				padding: 3rem 4rem 1rem;
-				position: relative;
-        width: 25rem;
+        box-shadow: inset 0.8rem 0 1.5rem -0.4rem rgba(118, 47, 80, 0.3),
+          inset 0 0 5rem rgba(118, 47, 32, 0.1);
       }
-			pre, .poem {
-				font-family: "IM Fell DW Pica";
-				font-size: 1.5rem;
-				opacity: 0.9;
-			}
-			footer {
-				text-align: center;
-				font-family: monospace;
-				opacity: 0.5;
+      #this-place:before,
+      #this-place:after {
+        display: block;
+        position: absolute;
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.25;
+      }
+      #this-place:before {
+        height: 300px;
+        width: 200px;
+        background-image: url(stain1.png);
+        top: 400px;
+        left: 1rem;
+      }
+      #this-place:after {
+        height: 180px;
+        width: 180px;
+        background-image: url(stain2.png);
+        bottom: 1rem;
+        right: 1rem;
+      }
+      #this-place img {
+        display: block;
+        width: 300px;
+        margin: 0 auto 4rem;
+        opacity: 0.75;
+      }
+      section, footer {
+	width: 25rem;
+	margin: 0 auto;
+      }
+      section {
+        border-radius: 6px 1px 2px 4px;
+        padding: 3rem 4rem 1rem;
+        position: relative;
+      }
+      pre,
+      .poem {
+        font-family: "IM Fell DW Pica";
+        font-size: 1.5rem;
+        opacity: 0.9;
+      }
+      footer {
+        text-align: center;
+        font-family: monospace;
+        opacity: 0.5;
         margin-bottom: 4rem;
-			}
-		</style>
-	</head>
-	<body>
-		<section id="promise">
-			<div class="poem">
-			<div class="promise-line"><span class="promise-letter">I</span></div>
-			<br />
-			<div class="promise-line"><span class="promise-letter">p</span><span class="promise-remaining">erhaps have not</span></div>
-			<div class="promise-line"><span class="promise-letter">r</span><span class="promise-remaining">emembered every important</span></div>
-			<div class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">ccurrence in our</span></div>
-			<div class="promise-line"><span class="promise-letter">m</span><span class="promise-remaining">arriage, being an</span></div>
-			<div class="promise-line"><span class="promise-letter">i</span><span class="promise-remaining">mperfect human with</span></div>
-			<div class="promise-line"><span class="promise-letter">s</span><span class="promise-remaining">cientifically proven flaws.</span></div>
-			<div class="promise-line"><span class="promise-letter">e</span><span class="promise-remaining">ven still,</span></div>
-			<br />
-			<div class="promise-line"><span class="promise-letter">t</span><span class="promise-remaining">he foundation to all</span></div>
-			<div class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">f my actions&mdash;</span></div>
-			<br />
-			<div class="promise-line"><span class="promise-letter">l</span><span class="promise-remaining">ying in the depths</span></div>
-			<div class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">f my</span></div>
-			<div class="promise-line"><span class="promise-letter">v</span><span class="promise-remaining">ery</span></div>
-			<div class="promise-line"><span class="promise-letter">e</span><span class="promise-remaining">xistence&mdash;is the vow I made to</span></div>
-			<br />
-			<div class="promise-line"><span class="promise-letter">y</span><span class="promise-remaining">ou that</span></div>
-			<div class="promise-line"><span class="promise-letter">o</span><span class="promise-remaining">nly needs to be</span></div>
-			<div id="promise-trigger" class="promise-line"><span class="promise-letter">u</span><span class="promise-remaining">ncovered.</span></div>
-			</div>
-		</section>
-		<footer>
-			<p>
-				Promise
-				&mdash; by Chris for April, <em>14 Feb 2022</em>
-			</p>
-		</footer>
+      }
+    </style>
+  </head>
+  <body>
+    <section id="promise">
+      <div class="poem">
+        <div class="promise-line"><span class="promise-letter">I</span></div>
+        <br />
+        <div class="promise-line">
+          <span class="promise-letter">p</span
+          ><span class="promise-remaining">erhaps have not</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">r</span
+          ><span class="promise-remaining">emembered every important</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">o</span
+          ><span class="promise-remaining">ccurrence in our</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">m</span
+          ><span class="promise-remaining">arriage, being an</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">i</span
+          ><span class="promise-remaining">mperfect human with</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">s</span
+          ><span class="promise-remaining">cientifically proven flaws.</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">e</span
+          ><span class="promise-remaining">ven still,</span>
+        </div>
+        <br />
+        <div class="promise-line">
+          <span class="promise-letter">t</span
+          ><span class="promise-remaining">he foundation to all</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">o</span
+          ><span class="promise-remaining">f my actions&mdash;</span>
+        </div>
+        <br />
+        <div class="promise-line">
+          <span class="promise-letter">l</span
+          ><span class="promise-remaining">ying in the depths</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">o</span
+          ><span class="promise-remaining">f my</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">v</span
+          ><span class="promise-remaining">ery</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">e</span
+          ><span class="promise-remaining"
+            >xistence&mdash;is the vow I made to</span
+          >
+        </div>
+        <br />
+        <div class="promise-line">
+          <span class="promise-letter">y</span
+          ><span class="promise-remaining">ou that</span>
+        </div>
+        <div class="promise-line">
+          <span class="promise-letter">o</span
+          ><span class="promise-remaining">nly needs to be</span>
+        </div>
+        <div id="promise-trigger" class="promise-line">
+          <span class="promise-letter">u</span
+          ><span class="promise-remaining">ncovered.</span>
+	</div>
+      </div>
+    </section>
+    <footer>
+      <p>Promise &mdash; by Chris for April, <em>14 Feb 2022</em></p>
+    </footer>
     <section id="kintsugi">
       <pre>
 my shattered pieces
@@ -216,10 +275,7 @@ our love renews us
       </pre>
     </section>
     <footer>
-			<p>
-				You/Me Kintsugi
-				&mdash; by Chris for April, <em>14 Feb 2021</em>
-			</p>
+      <p>You/Me Kintsugi &mdash; by Chris for April, <em>14 Feb 2021</em></p>
     </footer>
     <section id="mosaic">
       <pre>
@@ -244,10 +300,7 @@ to love her.
       </pre>
     </section>
     <footer>
-			<p>
-				A Mosaic Filled
-				&mdash; by Chris for April, <em>14 Feb 2020</em>
-			</p>
+      <p>A Mosaic Filled &mdash; by Chris for April, <em>14 Feb 2020</em></p>
     </footer>
     <section id="moon">
       <div id="stars"></div>
@@ -260,16 +313,13 @@ for you stays constant.
       </pre>
     </section>
     <footer>
-			<p>
-				Moon: A Haiku
-				&mdash; by Chris for April, <em>14 Feb 2019</em>
-			</p>
+      <p>Moon: A Haiku &mdash; by Chris for April, <em>14 Feb 2019</em></p>
     </footer>
-		<section id="this-place">
-			<p>
-				<img src="heart2.png" alt="geometric heart watercolor painting" />
-			</p>
-			<pre>
+    <section id="this-place">
+      <p>
+        <img src="heart2.png" alt="geometric heart watercolor painting" />
+      </p>
+      <pre>
 This place we’ve made for ourselves,
 
 Built from something stronger
@@ -300,83 +350,83 @@ We who are here,
 You and I and the little light-bringers,
 
 Perfectly we fit.
-			</pre>
-		</section>
-		<footer>
-			<p>
-				This Place
-				&mdash; by Chris for April, <em>14 Feb 2018</em>
-			</p>
-		</footer>
+			</pre
+      >
+    </section>
+    <footer>
+      <p>This Place &mdash; by Chris for April, <em>14 Feb 2018</em></p>
+    </footer>
     <script>
-	// Promise
-	const transforms = [
-		[0, 200],
-		[20, 140],
-		[32, 110],
-		[41, 80],
-		[53, 50],
-		[71, 21],
-		[78, -9],
-		[86, -38],
+      // Promise
+      const transforms = [
+        [0, 200],
+        [20, 140],
+        [32, 110],
+        [41, 80],
+        [53, 50],
+        [71, 21],
+        [78, -9],
+        [86, -38],
 
-		[0, -65],
-		[7, -95],
-		[28, -154],
-		[35, -183],
-		[47, -213],
-		[57, -242],
+        [0, -65],
+        [7, -95],
+        [28, -154],
+        [35, -183],
+        [47, -213],
+        [57, -242],
 
-		[0, -273],
-		[12, -303],
-		[23, -333],
-	]
-	const remainingEls = Array.from(document.querySelectorAll('.promise-remaining')).reverse();
-	const t1 = anime.timeline({ autoplay: false });
-	t1.add({
-		targets: remainingEls,
-		opacity: 0,
-		delay: anime.stagger(200),
-		duration: 800,
-		easing: 'linear',
-		changeComplete: function(anim) {
-			if (anim.reversed) {
-				playingState = 0
-				trigger.classList.remove('promise-trigger-end');
-			}
-		},
-	}).add({
-		targets: '.promise-line',
-		delay: anime.stagger(100),
-		easing: 'easeOutBack',
-		translateX: function(el, i) {
-			return transforms[i][0];
-		},
-		translateY: function(el, i) {
-			return transforms[i][1];
-		},
-		changeComplete: function(anim) {
-			if (!anim.reversed) {
-				playingState = 2
-				trigger.classList.add('promise-trigger-end');
-			}
-		}
-	});
-	let playingState = 0;
-	const trigger = document.getElementById('promise-trigger')
-	trigger.addEventListener('click', function(event) {
-		if (playingState === 0) {
-			if (t1.reversed) {
-				t1.reverse();
-			}
-			t1.play();
-			playingState = 1;
-		} else if (playingState === 2) {
-			t1.reverse();
-			t1.play();
-			playingState = 3;
-		}
-	});
+        [0, -273],
+        [12, -303],
+        [23, -333],
+      ];
+      const remainingEls = Array.from(
+        document.querySelectorAll(".promise-remaining")
+      ).reverse();
+      const t1 = anime.timeline({ autoplay: false });
+      t1.add({
+        targets: remainingEls,
+        opacity: 0,
+        delay: anime.stagger(200),
+        duration: 800,
+        easing: "linear",
+        changeComplete: function (anim) {
+          if (anim.reversed) {
+            playingState = 0;
+            trigger.classList.remove("promise-trigger-end");
+          }
+        },
+      }).add({
+        targets: ".promise-line",
+        delay: anime.stagger(100),
+        easing: "easeOutBack",
+        translateX: function (el, i) {
+          return transforms[i][0];
+        },
+        translateY: function (el, i) {
+          return transforms[i][1];
+        },
+        changeComplete: function (anim) {
+          if (!anim.reversed) {
+            playingState = 2;
+            trigger.classList.add("promise-trigger-end");
+          }
+        },
+      });
+      let playingState = 0;
+      const trigger = document.getElementById("promise-trigger");
+      trigger.addEventListener("click", function (event) {
+        if (playingState === 0) {
+          if (t1.reversed) {
+            t1.reverse();
+          }
+          t1.play();
+          playingState = 1;
+        } else if (playingState === 2) {
+          t1.reverse();
+          t1.play();
+          playingState = 3;
+        }
+      });
       // Mosaic
       function treatAsUTC(date) {
         var result = new Date(date);
@@ -386,39 +436,42 @@ Perfectly we fit.
 
       function daysBetween(startDate, endDate) {
         var millisecondsPerDay = 24 * 60 * 60 * 1000;
-        return Math.floor((treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay);
+        return Math.floor(
+          (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay
+        );
       }
 
-      document.getElementById('number_of_days').innerText = numberToWords.toWords(daysBetween(1141456944000, Date.now()))
+      document.getElementById("number_of_days").innerText =
+        numberToWords.toWords(daysBetween(1141456944000, Date.now()));
 
       // Moon
       var waves = new SineWaves({
-        el: document.getElementById('waves'),
+        el: document.getElementById("waves"),
         speed: 10,
-        ease: 'SineInOut',
-        wavesWidth: '90%',
-        width: function() {
-          return document.getElementById('moon').offsetWidth
+        ease: "SineInOut",
+        wavesWidth: "90%",
+        width: function () {
+          return document.getElementById("moon").offsetWidth;
         },
         height: 100,
         waves: [
           {
-            lineWidth: 1,      // Stroke width
-            amplitude: -60,    // How tall is the wave
-            wavelength: 15,   // How long is the wave
+            lineWidth: 1, // Stroke width
+            amplitude: -60, // How tall is the wave
+            wavelength: 15, // How long is the wave
             segmentLength: 5, // How smooth should the line be
-            type: 'sine'    
-          }
+            type: "sine",
+          },
         ],
-        resizeEvent: function() {
+        resizeEvent: function () {
           var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-          gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
-          gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.333)');
-          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+          gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.333)");
+          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
           var index = -1;
           var length = this.waves.length;
-          while(++index < length){
+          while (++index < length) {
             this.waves[index].strokeStyle = gradient;
           }
 
@@ -426,8 +479,8 @@ Perfectly we fit.
           index = void 0;
           length = void 0;
           gradient = void 0;
-        }
+        },
       });
     </script>
-	</body>
+  </body>
 </html>
