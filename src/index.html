@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Love you, April</title>
     <link
       href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica"
@@ -15,12 +16,22 @@
         padding: 3rem 1rem;
         margin: 0;
       }
+      #untitled {
+        padding-left: 0;
+        padding-right: 0;
+        width: 35rem;
+        text-align: justify;
+      }
+      #untitled s {
+        background: black;
+        color: transparent;
+      }
       #promise-trigger {
         transition: color 0.5s linear;
         color: #d40093;
         cursor: pointer;
         position: relative;
-	user-select: none;
+        user-select: none;
       }
       #promise-trigger.promise-trigger-end {
         color: inherit;
@@ -56,9 +67,9 @@
       #mosaic {
         color: rgba(0, 0, 0, 0.75);
         background: url(linedpaper.png) repeat;
-        background-size: 97%;
-        background-position: 0 21px;
-        line-height: 29px;
+        background-size: 94%;
+        background-position: 0 12px;
+        line-height: 32.5px;
         width: fit-content;
       }
       #mosaic:after {
@@ -165,9 +176,10 @@
         margin: 0 auto 4rem;
         opacity: 0.75;
       }
-      section, footer {
-	width: 25rem;
-	margin: 0 auto;
+      section,
+      footer {
+        width: 25rem;
+        margin: 0 auto;
       }
       section {
         border-radius: 6px 1px 2px 4px;
@@ -189,6 +201,55 @@
     </style>
   </head>
   <body>
+    <section id="untitled" class="poem">
+      <p>
+        imagine <s>-------------------</s> immense<s
+          >---------------------------</s
+        >
+        giving and receiving
+        <s>----------------------------------------------------</s> one to
+        <s>-----------</s> the other<s>----------------</s>
+      </p>
+      <p>///</p>
+      <p>
+        imagine <s>-------------------</s> immense<s
+          >---------------------------</s
+        >
+        intimacy<s>--</s>she notices <s>---------------</s> him
+        <s>------------------------------------</s> once
+        <s>------------------</s> he <s>----</s>has the capacity
+        <s>--------------</s> for her
+        <s>-------------------------------</s>
+        giving and receiving <s>-----------</s>a<s>--</s> great<s>--</s> gift<s
+          >--</s
+        >
+        imagine <s>------------</s> for <em>years</em> <s>------</s> they
+        <s>--------------------------------</s> build <s>----------</s> up<s
+          >----------</s
+        >
+        one to <s>----------</s> perfect <s>-----------</s> the other&mdash;<s
+          >-------------------------</s
+        >
+        joyously.
+      </p>
+      <p>///</p>
+      <p>
+        imagine two people who care immensely for each other. in their intimacy,
+        she notices a brokenness in him and works to lift him up beyond its
+        reaches. once freed from that burden, he now has the capacity to do
+        <em>exactly</em> the same for her, raising her up to new heights. now
+        imagine this repeats&mdash;this giving and receiving of greater and
+        greater gifts. imagine this repeats for <em>years</em>, until they both
+        stand as strong as mountains, unperturbed by any present circumstance
+        that in the past would have consumed their lives. over time, they build
+        each other up, enabling one to become the perfect partner for the
+        other&mdash;all of this willingly and joyously.
+      </p>
+    </section>
+    <footer>
+      <p>To perfection &mdash; by Chris for April, <em>14 Feb 2023</em></p>
+      <p>Notes: The form of this poem was inspired by the “burning haibun” form, invented by torrin a. greathouse. Here the order of the sections has been reversed.</p>
+    </footer>
     <section id="promise">
       <div class="poem">
         <div class="promise-line"><span class="promise-letter">I</span></div>
@@ -261,7 +322,7 @@
         <div id="promise-trigger" class="promise-line">
           <span class="promise-letter">u</span
           ><span class="promise-remaining">ncovered.</span>
-	</div>
+        </div>
       </div>
     </section>
     <footer>
