@@ -10,11 +10,26 @@
     <script src="sine-waves.min.js"></script>
     <script src="numberToWords.min.js"></script>
     <script src="anime.min.js"></script>
+    <script src="https://unpkg.com/typeit@8.8.7/dist/index.umd.js"></script>
     <style>
       body {
         background: #fff;
         padding: 3rem 1rem;
         margin: 0;
+      }
+      #writing {
+        padding-bottom: 2.5rem; 
+        background-color: #fffdf9;
+      }
+      #writing:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 6px 1px 2px 4px;
+        box-shadow: inset 0 0 5rem rgb(92 37 0 / 0.2);
       }
       #garden pre {
         margin-bottom: 0;
@@ -225,6 +240,10 @@
     </style>
   </head>
   <body>
+    <section id="writing" class="poem"></section>
+    <footer>
+      <p>Story &mdash; by Chris for April, <em>14 Feb 2026</em></p>
+    </footer>
     <section id="garden" class="poem">
       <img src="flowers.jpeg" width="100%" />
       <pre>
@@ -606,13 +625,126 @@ We who are here,
 You and I and the little light-bringers,
 
 Perfectly we fit.
-			</pre
-      >
+			</pre>
     </section>
     <footer>
       <p>This Place &mdash; by Chris for April, <em>14 Feb 2018</em></p>
     </footer>
     <script>
+      // Writing
+      new TypeIt("#writing", {
+        speed: 60,
+        cursor: true,
+        deleteSpeed: 50,
+        waitUntilVisible: true,
+        loop: true
+      })
+        .type("Every day we write our stories")
+        .pause(1500)
+
+        // 1. "Every " (6 chars) -> "To "
+        // Move from the end of the line (-30) to the end of "Every "
+        .move(-24, { instant: true, delay: 150 }) 
+        .delete(6, { delay: 200 })
+        .type("To", { delay: 300 })
+
+        // 2. "we" (2 chars) -> "I"
+        // Cursor is currently after "To ". 
+        // We need to skip "day " (4 chars) to land after "we".
+        .move(6, { delay: 90 }) 
+        .delete(2, { delay: 120 })
+        .type("I", { delay: 240 })
+
+        // 3. "our" (3 chars) -> "my"
+        // Cursor is currently after "I".
+        // Skip " write our" (10 chars) to land after "our".
+        .move(10, { delay: 110 })
+        .delete(3, { delay: 150 })
+        .type("m", { delay: 100 })
+        .type("y", { delay: 150 })
+
+        // 4. "stories" (7 chars) -> "story"
+        // Move to the very end of the string.
+        .move(null, { to: "END" }, { delay: 150 })
+        // Delete "ies" (3 chars) and replace with "y"
+        .delete(3, { delay: 100 })
+        .type("y")
+        .pause(1500)
+
+        // 5. Go to start of "my story" and delete to "Today"
+        .move(-8, { delay: 100 }) // Move to the start of "my story"
+        .delete(8, { delay: 200 })
+        .move(null, { to: "END", delay: 250 })
+        .type(" starts with you")
+        .pause(1500)
+
+        // 6. Replace "Today" with "And"
+        .move(-25, { instant: true, delay: 260 }) // Move to the end of "Today"
+        .delete(5, { delay: 200 })
+        .type("And", { delay: 300 })
+
+        // 7. Replace "starts" with "ends"
+        .move(16, { delay: 150 }) // Move to the end of "starts"
+        .delete(6, { delay: 230 })
+        .type("ends")
+        .pause(1500)
+
+        // 8. Erase everything except you and type "I am enveloped by you"
+        .move(5, { delay: 300 }) // Move to the end of "you"
+        .delete(22, { delay: 200 })
+        .type("I am enveloped by")
+        .move(4, { delay: 150 }) // Move to the end of "you"
+        .pause(1000)
+
+        // 9. Replace "you" with "your gentle love"
+        .type("r gentle love")
+        .pause(1500)
+
+        // 10. Change to "Enveloped and transformed"
+        .move(-28, { instant: true, delay: 200 }) // Move to the start of "Enveloped"
+        .delete(6, { delay: 200 })
+        .type("E", { delay: 230 })
+        .move(null, { to: "END", instant: true, delay: 300 })
+        .delete(19, { delay: 200 })
+        
+
+        .type("and affirmed")
+        .pause(1000)
+
+
+        .delete(8, { delay: 180 })
+        .type("transformed")
+        .pause(1000)
+
+        .delete(11, { delay: 210 })
+        .type("revealed")
+        .pause(1000)
+
+
+        // 11. Change to "Enveloped and elevated"
+        .delete(8, { delay: 200 })
+        .type("elevated")
+        .pause(2500)
+
+        // 12. Change to "And I am grateful"
+        .delete(9, { delay: 210 })
+        .move(-2)
+        .delete(11, { delay: 190 })
+        .type("A", { delay: 100 })
+        .move(null, { to: "END", instant: true, delay: 150 })
+        .type(" I am grateful")
+        .pause(1500)
+
+        // 13. Change to "Every day I am grateful for you"
+        .move(-13, { instant: true, delay: 180 })
+        .delete(4, { delay: 200 })
+        .type("Every day ", { delay: 220 })
+        .move(null, { to: "END", instant: true, delay: 200 })
+        .type(" for <i>you</i>")
+        .pause(3000)
+
+        .go();
+
       // Promise
       const transforms = [
         [0, 200],
